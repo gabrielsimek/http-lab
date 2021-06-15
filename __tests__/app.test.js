@@ -15,6 +15,7 @@ describe.only('app routes', () => {
     expect(res.status).toBe(200);
     expect(res.text).toEqual('hello');
   });
+
   it('gets a html page with h1 and word red from /red', async() => {
     const res = await request(app)
       .get('/red');
@@ -33,6 +34,7 @@ describe.only('app routes', () => {
 </body>
 </html>`);
   });
+
   it('gets a html page with h1 and word green from /green', async() => {
     const res = await request(app)
       .get('/green');
@@ -51,6 +53,7 @@ describe.only('app routes', () => {
 </body>
 </html>`);
   });
+
   it('gets a html page with h1 and word blue from /blue', async() => {
     const res = await request(app)
       .get('/blue');
@@ -69,6 +72,7 @@ describe.only('app routes', () => {
 </body>
 </html>`);
   });
+
   it('gets a html page with h1 and word green from /green', async() => {
     const res = await request(app)
       .get('/green');
@@ -87,11 +91,21 @@ describe.only('app routes', () => {
 </body>
 </html>`);
   });
-  // it('gets a html page with h1 and word green from /green', async() => {
-  //   const res = await request(app)
-  //     .get('/yellow');
-  //   console.log(res.contentType);
-  //   expect(res.status).toBe(200);
-  // });
+
+  it('returns a body of "not found" and a status of 404 if the requested get route does not exist', async() => {
+    const res = await request(app).get('/yellow');
+  
+    expect(res.status).toBe(404);
+    expect(res.text).toEqual('Not Found');
+  });
+  
+  it('returns a body of "not found" and a status of 404 if the requested POST route does not exist', async() => {
+    const res = await request(app)
+      .post('/users')
+      .send({ name: 'gabriel', email: 'gabriel@gabriel.com' });
+
+    expect(res.status).toBe(404);
+    expect(res.text).toEqual('Not Found');
+  });
 });
   
