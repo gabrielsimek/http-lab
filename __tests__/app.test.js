@@ -29,7 +29,7 @@ describe.only('app routes', () => {
   <title>Document</title>
 </head>
 <body>
-  <h1>Red</h1>
+  <h1>red</h1>
 </body>
 </html>`);
   });
