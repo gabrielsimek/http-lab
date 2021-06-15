@@ -87,5 +87,11 @@ describe.only('app routes', () => {
 </body>
 </html>`);
   });
+  // it('gets a html page with h1 and word green from /green', async() => {
+  //   const res = await request(app)
+  //     .get('/yellow');
+  //   console.log(res.contentType);
+  //   expect(res.status).toBe(200);
+  // });
 });
   
