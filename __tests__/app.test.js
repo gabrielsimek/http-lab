@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../lib/app');
 
-describe.only('app routes', () => {
+describe('app routes', () => {
   it('gets "hi" from / ', async() => {
     const res = await request(app).get('/');
   
@@ -98,7 +98,7 @@ describe.only('app routes', () => {
     expect(res.status).toBe(404);
     expect(res.text).toEqual('Not Found');
   });
-  
+
   it('returns a body of "not found" and a status of 404 if the requested POST route does not exist', async() => {
     const res = await request(app)
       .post('/users')
