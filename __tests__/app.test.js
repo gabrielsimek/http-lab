@@ -107,5 +107,26 @@ describe('app routes', () => {
     expect(res.status).toBe(404);
     expect(res.text).toEqual('Not Found');
   });
+  
+});
+describe('file system', () => {
+  it('gets an index html file', async() => {
+    const res = request(app).get('/index.html');
+
+    expect(res.body).toEqual(
+      `<!DOCTYPE html>
+   <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+   </head>
+   <body>
+       <h1>Some Stuff</h1>
+       
+   </body>
+   </html>`
+    );
+  });
 });
   
