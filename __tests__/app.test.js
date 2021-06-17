@@ -109,12 +109,13 @@ describe('app routes', () => {
   });
   
 });
+
 describe('file system', () => {
   it('gets an index html file', async() => {
     const res = await request(app).get('/index.html');
     const expected = await fsPromises.readFile('./public/index.html', 'utf-8');
+    
     expect(res.status).toBe(200);
-
     expect(res.text).toEqual(expected);
   });
   it('responds with Not Found message if request file not found', async() => {
