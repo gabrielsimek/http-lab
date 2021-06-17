@@ -109,7 +109,7 @@ describe('app routes', () => {
   });
   
 });
-describe('file system', () => {
+describe.only('file system', () => {
   it('gets an index html file', async() => {
     const res = request(app).get('/index.html');
 
