@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../lib/app');
-
+const fsPromises = require('fs/promises');
 describe('app routes', () => {
   it('gets "hi" from / ', async() => {
     const res = await request(app).get('/');
@@ -112,23 +112,10 @@ describe('app routes', () => {
 describe.only('file system', () => {
   it('gets an index html file', async() => {
     const res = await request(app).get('/index.html');
-
+    const expected = await fsPromises.readFile('./public/index.html', 'utf-8');
     expect(res.status).toBe(200);
 
-    expect(res.body).toEqual(
-      `<!DOCTYPE html>
-   <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Document</title>
-   </head>
-   <body>
-       <h1>Some Stuff</h1>
-       
-   </body>
-   </html>`
-    );
+    expect(res.text).toEqual(expected);
   });
 });
   
