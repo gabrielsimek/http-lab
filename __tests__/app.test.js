@@ -111,7 +111,9 @@ describe('app routes', () => {
 });
 describe.only('file system', () => {
   it('gets an index html file', async() => {
-    const res = request(app).get('/index.html');
+    const res = await request(app).get('/index.html');
+
+    expect(res.status).toBe(200);
 
     expect(res.body).toEqual(
       `<!DOCTYPE html>
