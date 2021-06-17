@@ -117,5 +117,11 @@ describe.only('file system', () => {
 
     expect(res.text).toEqual(expected);
   });
+  it('responds with Not Found message if request file not found', async() => {
+    const res = await request(app).get('/styles.css');
+    
+    expect(res.status).toBe(404);
+    expect(res.text).toEqual('File Not Found');
+  });
 });
   
