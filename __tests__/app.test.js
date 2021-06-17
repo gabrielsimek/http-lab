@@ -109,7 +109,7 @@ describe('app routes', () => {
   });
   
 });
-describe.only('file system', () => {
+describe('file system', () => {
   it('gets an index html file', async() => {
     const res = await request(app).get('/index.html');
     const expected = await fsPromises.readFile('./public/index.html', 'utf-8');
